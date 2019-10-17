@@ -1,60 +1,98 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
-    <p>
-      For a guide and recipes on how to configure / customize this project,<br>
-      check out the
-      <a href="https://cli.vuejs.org" target="_blank" rel="noopener">vue-cli documentation</a>.
-    </p>
-    <h3>Installed CLI Plugins</h3>
-    <ul>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel" target="_blank" rel="noopener">babel</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-router" target="_blank" rel="noopener">router</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-vuex" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint" target="_blank" rel="noopener">eslint</a></li>
-    </ul>
-    <h3>Essential Links</h3>
-    <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
-      <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
-      <li><a href="https://news.vuejs.org" target="_blank" rel="noopener">News</a></li>
-    </ul>
-    <h3>Ecosystem</h3>
-    <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
-    </ul>
+  <div class="demo">
+    <div class="search">
+      <el-autocomplete
+        v-model="state4"
+        :fetch-suggestions="querySearchAsync"
+        placeholder="请输入内容"
+        @select="handleSelect"
+        prefix-icon="el-icon-search"
+        class="inpu"
+      ></el-autocomplete>
+    </div>
+    <div class="shangcuan">
+      <el-button type="primary" class="anniu">
+        <img src="../assets/icon/上传.png" alt />
+        上传文件
+      </el-button>
+    </div>
+    <div class="chuan">
+      <el-row>
+        <el-col class="form_biao" :span="24">
+          <div class="lico">
+            <img src="../assets/icon/文件类型.png" alt="">
+          </div>
+          <div class="biaoshu">
+            <span>文件名</span>
+            <span>文件大小</span>
+          </div>
+          <div class="txt_wenjian">
+            路径
+          </div>
+          <div class="progress">
+            <span>剩余时间</span>
+            <span>进度条</span>
+          </div>
+          <div class="tail"></div>
+        </el-col>
+      </el-row>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
-  props: {
-    msg: String
+  data () {
+    return {}
   }
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="less">
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+<style lang="less" scope>
+.demo {
+  border: 1px solid red;
+  .search {
+    .inpu {
+      width: 620px;
+      height: 50px;
+    }
+  }
+  .shangcuan {
+    .anniu {
+      height: 50px;
+      width: 240px;
+      font-size: 18px;
+      img {
+        margin-right: 32px;
+        vertical-align: middle;
+      }
+    }
+  }
+  .chuan {
+    .form_biao{
+      height: 88px;
+      border: 1px solid black;
+      display: flex;
+      div{
+        height: 100%;
+        border: 1px solid rgb(96, 241, 11);
+      }
+      .lico{
+        width: 40px;
+      }
+      .biaoshu{
+        width: 214px;
+      }
+      .txt_wenjian{
+        width: 248px;
+      }
+      .progress{
+        width: 377px;
+      }
+      .tail{
+        width: 102px;
+      }
+    }
+  }
 }
 </style>
